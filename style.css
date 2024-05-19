@@ -1,5 +1,7 @@
 * {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -12,61 +14,28 @@ body {
 
 .navbar {
     width: 100%;
-    height: 50px;
     background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
 }
 
 .navbarContainer {
+    width: 100%;
     display: flex;
     align-items: center;
-    padding: 0 50px;
-    height: 100%;
-    color: white;
-    font-family: 'Sen', sans-serif;
+    justify-content: space-between;
 }
 
-.logoContainer {
-    flex: 1;
+.logoContainer img {
+    height: 50px;
+    width: 50px;
 }
-
 
 .menuContainer {
-    flex: 6;
-    color: white;
+    display: flex;
 }
-
-
-
-
-/* Ensure the style is applied to the a elements within menuListItem class */
-.menuListItem a {
-    text-decoration: none; /* Remove underlines from links */
-    color: #ffffff; /* Set the text color */
-    font-family: Arial, sans-serif; /* Set the font */
-    font-size: 16px; /* Set the font size */
-    padding: 10px 15px; /* Add some padding around the text */
-    display: block; /* Make the links block-level elements */
-}
-
-/* Add hover effect */
-.menuListItem a:hover {
-    background-color: #0d91a2; /* Light grey background on hover */
-    color: #000; /* Darker text color on hover */
-}
-
-/* Active link styling */
-.menuListItem a:active {
-    background-color: #ddd; /* Slightly darker background when active */
-}
-
-/* Style for the current page link (you can add an 'active' class to the current page link in your HTML) */
-.menuListItem a.active {
-    background-color: #ccc; /* Different background color for the active page */
-    color: #000; /* Darker text color for the active page */
-    font-weight: bold; /* Bold text for the active page */
-}
-
-
 
 .menuList {
     display: flex;
@@ -74,59 +43,102 @@ body {
 }
 
 .menuListItem {
-    margin: 30px;
+    margin: 0 10px;
     cursor: pointer;
 }
 
-
-.toggle {
-    width: 40px;
-    height: 20px;
-    background-color: white;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    position: relative;
+.menuListItem a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 15px;
+    display: block;
 }
 
-.toggleIcon {
-    color: goldenrod;
+.menuListItem a:hover {
+    background-color: #0d91a2;
+    color: #000;
 }
 
-.toggleBall {
-    width: 18px;
-    height: 18px;
-    background-color: black;
+.menuListItem a:active {
+    background-color: #1191bc;
+}
+
+.menuListItem a.active {
+    background-color: #ccc;
+    color: #000;
+    font-weight: bold;
+}
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+.mobileMenu {
+    display: none;
     position: absolute;
-    right: 1px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 1s ease all;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.mobileMenuList {
+    list-style: none;
+}
+
+.mobileMenuItem {
+    margin-bottom: 10px;
+}
+
+.mobileMenuItem a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 10px 15px;
+    display: block;
+    background-color: #000;
+    border: 1px solid #fff;
+}
+
+.mobileMenuItem a:hover {
+    background-color: #0d91a2;
+    color: #000;
 }
 
 .container {
     min-height: calc(100vh - 50px);
     background-color: #151515;
     color: white;
+    padding: 20px;
 }
 
 .contentContainer {
-    margin-left: 50px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 .featuredContent {
     height: 50vh;
-    padding: 50px;
-}
-
-.featuredTitle {
-    width: 200px;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    color: lightgray;
 }
 
 .featuredDesc {
-    width: 500px;
-    color: lightgray;
+    max-width: 500px;
     margin: 30px 0;
 }
 
@@ -142,31 +154,33 @@ body {
 }
 
 .movieListContainer {
-    padding: 0 20px;
+    padding: 20px 0;
+}
+
+.movieListTitle {
+    margin-bottom: 20px;
 }
 
 .movieListWrapper {
     position: relative;
-    overflow: hidden;
+    overflow-x: auto;
 }
 
 .movieList {
     display: flex;
-    height: 300px;
     align-items: center;
-    transform: translateX(0);
-    transition: all 1s ease-in-out;
+    gap: 30px;
+    padding-bottom: 10px;
 }
 
 .movieListItem {
-    margin-right: 30px;
+    flex: 0 0 auto;
     position: relative;
 }
 
 .movieListItem:hover .movieListItemImg {
-    transform: scale(1.2);
-    margin: 0 30px;
-    opacity: 0.5;
+    transform: scale(1.1);
+    opacity: 0.7;
 }
 
 .movieListItem:hover .movieListItemTitle,
@@ -176,34 +190,38 @@ body {
 }
 
 .movieListItemImg {
-    width: 270px;
+    width: 100%;
+    max-width: 270px;
     height: 200px;
     object-fit: cover;
-    transition: all 1s ease-in-out;
-    border-radius: 20px;
+    transition: all 0.3s ease;
+    border-radius: 10px;
 }
 
 .movieListItemTitle {
-    background-color: #333;
-    padding: 0 10px;
-    font-size: 32px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    font-size: 20px;
     font-weight: bold;
     position: absolute;
-    top: 10%;
-    left: 50px;
+    bottom: 70px;
+    left: 10px;
     opacity: 0;
-    transition: 1s all ease-in-out;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
 }
 
 .movieListItemDesc {
-    background-color: #333;
+    background-color: rgba(0, 0, 0, 0.7);
     padding: 10px;
     font-size: 14px;
     position: absolute;
-    top: 30%;
-    left: 50px;
-    width: 230px;
+    bottom: 40px;
+    left: 10px;
+    width: calc(100% - 20px);
     opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 5px;
 }
 
 .movieListItemButton {
@@ -215,59 +233,72 @@ body {
     border: none;
     cursor: pointer;
     position: absolute;
-    bottom: 20px;
-    left: 50px;
+    bottom: 10px;
+    left: 10px;
     opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .arrow {
-    font-size: 120px;
+    font-size: 30px;
     position: absolute;
-    top: 90px;
-    right: 0;
+    top: 50%;
+    right: 10px;
     color: white;
     opacity: 0.5;
     cursor: pointer;
+    transform: translateY(-50%);
 }
 
-.container.active {
-    background-color: white;
-}
-
-.movieListTitle.active {
-    color: black;
-}
-
-.navbarContainer.active {
-    background-color: white;
-    color: black;
-}
-
-.sidebar.active {
-    background-color: white;
-}
-
-.leftMenuIcon.active{
-    color: black;
-}
-
-.toggle.active {
-    background-color: black;
-}
-
-.toggleBall.active {
-    background-color: white;
-    transform: translateX(-20px);
-}
-
-.menuListItem.active {
-    color: black;
-}
-
-
-
-@media only screen and (max-width: 940px) {
+@media (max-width: 768px) {
     .menuContainer {
         display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 5px;
+    }
+
+    .logoContainer img {
+        height: 30px;
+    }
+
+    .featuredContent {
+        padding: 10px;
+    }
+
+    .featuredDesc {
+        font-size: 14px;
+        margin: 20px 0;
+    }
+
+    .featuredButton {
+        padding: 8px 16px;
+    }
+
+    .movieListItemImg {
+        width: calc(100vw - 20px);
+        height: 150px;
+    }
+
+    .movieListItemTitle {
+        font-size: 18px;
+        bottom: 60px;
+    }
+
+    .movieListItemDesc {
+        font-size: 12px;
+        bottom: 30px;
+    }
+
+    .movieListItemButton {
+        font-size: 12px;
+        bottom: 5px;
     }
 }
